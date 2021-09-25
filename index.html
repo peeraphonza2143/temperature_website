@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="font/Staatliches-Regular.ttf"> 
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>Humidity From A Sensor</title>
+</head>
+<body>
+    <div id="box">
+        <aside>
+           <div style="width: 100%;">
+            <span id="header" style="color:#219C82; font-family:'Staatliches';">HUMIDITY </span>
+            <span  id="header" style="color:#595C59; font-family:'Staatliches'">FROM A SENSOR</span>
+               <p  style="width: 800px; font-size: 24px; color: #595C59; margin-left: 5%; margin-top: 0;font-family:'TCM'">
+                A humidity sensor is an electronic device that measures the humidity 
+                in its environment and converts its findings into a corresponding 
+                electrical signal
+               </p>
+           </div>
+           <img src="./icon.png" style="width: 285px;  object-fit: cover; margin-right: 5%;">
+        </aside>
+    </div>
+    <main>
+        <div id="box" style="width: 100%; height: 500px;">
+             <div style="margin-left: 80px; margin-top: 40px;font-family:'TCM'">
+                <span  style="color:#219C82; font-size: 30px;">Real time</span>
+                <span  style="color:#595C59; font-size: 30px;"> graph of humidity with resolution 15 minutes</span>
+             </div>
+            <div id="chart_main" style="width: 90%; height: 400px; margin-right:10px;  margin-left:10px; "></div>
+        </div>
+        <article>
+            <div id="box" style="width: 100%; height:100%;"></div>
+            <div></div>
+            <div id="box" style="width: 100%; height:100%;"></div>
+        </article>
+    </main>
+    
+    <script src="./script/main_chart.js"></script>
+</body>
+</html>
