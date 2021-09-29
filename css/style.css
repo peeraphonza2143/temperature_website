@@ -43,8 +43,8 @@ img{
 }
 article{
     display: grid;
-    grid-template-rows:47% 5% 47%;
-    height: 500px;
+    grid-template-rows:50% 50%;
+    height: 600px;
     margin-left: 20px;
 }
 
