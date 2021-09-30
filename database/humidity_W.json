@@ -1,0 +1,8 @@
+{"_id":1.0,"week":"week 1","sensor_id":"1","humidity_2":"55"}
+{"_id":2.0,"week":"week 1","sensor_id":"2","humidity_2":"56"}
+{"_id":3.0,"week":"week 2","sensor_id":"1","humidity_2":"60"}
+{"_id":4.0,"week":"week 2","sensor_id":"2","humidity_2":"59"}
+{"_id":5.0,"week":"week 3","sensor_id":"1","humidity_2":"65"}
+{"_id":6.0,"week":"week 3","sensor_id":"2","humidity_2":"64"}
+{"_id":7.0,"week":"week 4","sensor_id":"1","humidity_2":"55"}
+{"_id":8.0,"week":"week 4","sensor_id":"2","humidity_2":"56"}
