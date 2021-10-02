@@ -1,6 +1,16 @@
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
+
+        function drawChart() {
+          
+        $.ajax({
+          dataType: "json",
+          url: 'http://localhost/mainchart',
+          success: function(response) {
+            console.log(response);
+          }
+        });
+
         var data = google.visualization.arrayToDataTable([
           ['Times', 'Sensor id', 'Sensor id','Sensor id'],
           [ 12.00,   30,      40,      50],
