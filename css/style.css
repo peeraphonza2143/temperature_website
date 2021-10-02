@@ -40,6 +40,9 @@ aside{
 }
 img{
     margin-top: 50px;
+    width: 285px;  
+    object-fit: cover; 
+    margin-right: 5%;
 }
 article{
     display: grid;
@@ -49,15 +52,24 @@ article{
 }
 
 
-@media screen and (max-width:1000px) { /*responsive design*/
+@media screen and (max-width:1600px) { /*responsive design*/
     main{ 
         display: grid;
         grid-template-columns: 100%;
 
     }
-    aside{
-        margin: 0px;
-        padding: 0px;
-        display: none;
-       }
+    article{
+        display: grid;
+        grid-template-rows:50% 50%;
+        height: 1000px;
+    }
+    article>div{
+        width: 80%;
+        height: 80%; 
+        margin-top: 30px; 
+    }
+       img{
+        display:none;
+    }
+
 }
