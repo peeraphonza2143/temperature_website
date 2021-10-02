@@ -2,10 +2,10 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-          
+
         $.ajax({
           dataType: "json",
-          url: 'http://localhost/mainchart',
+          url: 'http://localhost:3000/localhost/mainchart',
           success: function(response) {
             console.log(response);
           }
