@@ -46,8 +46,8 @@ const tempDs = [
 	}
 ]
 
-app.use(express.json())
-
+app.use(express.json());
+app.use(express.static(__dirname));
 app.get('/mainchart',async (req, res) => {
   const tempDs = await tempD.find({})
   res.json(tempDs)
@@ -71,7 +71,7 @@ db.once('open', function callback () {
   console.log("Mongo working!");
 });
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
+  res.render('index.html');
 });
 
 app.listen(3000, () => {
