@@ -1,6 +1,8 @@
+var ip = 'a95c-2001-44c8-451b-e124-a00-27ff-feee-6352.ngrok.io';
+
 (function () {
   `use strict`;
-fetch('http://a95c-2001-44c8-451b-e124-a00-27ff-feee-6352.ngrok.io/mainchart')
+fetch('http://'+ip+'/mainchart')
   .then(response => response.json())
   .then(data => getdata(data))
   .catch(

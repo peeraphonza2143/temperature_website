@@ -1,6 +1,6 @@
 (function () {
   `use strict`;
-fetch('http://a95c-2001-44c8-451b-e124-a00-27ff-feee-6352.ngrok.io/subchart2')
+fetch('http://'+ip+'/subchart2')
   .then(response => response.json())
   .then(data => getdata(data))
   .catch(
