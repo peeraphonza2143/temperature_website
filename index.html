@@ -8,43 +8,159 @@
     <script src="./script/main_chart.js"></script>
     <script src="./script/sup_chart.js"></script>
     <script src="./script/sup_chart2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <title>Humidity From A Sensor</title>
 </head>
 <body>
-    <div id="box">
-        <aside>
-           <div style="width: 100%;">
-            <span id="header" style="color:#219C82; font-family:'Staatliches';">HUMIDITY </span>
-            <span  id="header" style="color:#595C59; font-family:'Staatliches'">FROM A SENSOR</span>
-               <p  style="width: 800px; font-size: 24px; color: #595C59; margin-left: 5%; margin-top: 0;font-family:'TCM'">
-                A humidity sensor is an electronic device that measures the humidity 
-                in its environment and converts its findings into a corresponding 
-                electrical signal
-               </p>
-           </div>
-           <img src="../icon.png">
-        </aside>
-    </div>
     <main>
-        <div id="box" style="width: 100%; height: 600px;">
-             <div style="margin-left: 80px; margin-top: 50px;font-family:'TCM'">
-                <span  style="color:#219C82; font-size: 30px;">Real time</span>
-                <span  style="color:#595C59; font-size: 30px;"> graph of humidity with resolution 15 minutes</span>
-             </div>
-            <div id="chart_main" style="width: 90%; height: 400px; margin-right:10px;  margin-left:10px;  margin-top: 30px; "></div>
+        <div id="box">
+            <aside>
+               <div style="width: 100%;">
+                <span id="header" style="color:#219C82; font-family:'Staatliches';">HUMIDITY </span>
+                <span  id="header" style="color:#595C59; font-family:'Staatliches'">FROM A SENSOR</span>
+                   <p  style="width: 800px; font-size: 24px; color: #595C59; margin-left: 2%; margin-top: 0;font-family:'TCM'">
+                    A humidity sensor is an electronic device that measures the humidity in
+                     its environment and converts its findings into a corresponding electrical 
+                     signal
+                   </p>
+               </div>
+               <img src="../icon.png">
+            </aside>
         </div>
-        <article>
-            <div id="box" style="width: 100%; height:95%;">
-                <div id="chart_sup" style="width: 80%; height: 80%; margin-right:10px;  margin-left:20px; margin-top: 30px; " ></div>
-            </div>
-            <div id="box" style="width: 100%; height:95%; margin-top: 2%;">
-                <div id="chart_sup2" style="width: 80%; height: 80%; margin-right:10px;  margin-left:20px; margin-top: 30px; " ></div>
-            </div>
-        </article>
+
+        <div id="box" style="width: 100%; height: 725px; margin-top: 20px;  font-family:'TCM';">
+             <div style=" height: 30px;"></div>
+             <div style="margin-top: 20px;text-align: center; ">
+                <span  style="color:#219C82; font-size: 35px;">Real time</span>
+                <span  style="color:#595C59; font-size: 35px;"> graph of humidity with resolution 15 minutes</span>
+             </div>
+             <menu>
+                <input class="boxmenu" value="0123456789";
+                style="width: 135px; height: 43px;
+                background-image:url('search.png');
+                background-position: 10px 10px;
+                background-repeat: no-repeat;
+                padding-left: 40px;" 
+                type="text">
+                <div  style="width: 10px;"></div>
+                <input  class="boxmenu" value="2020-09-20" style="width: 192px; height: 43px;font-family:'TCM';"type="date">
+                <div  style="width: 10px;"></div>
+                <input style="
+                width: 78px;
+                height: 29px;
+                margin-top: 10px;
+                color: white;
+                background: #219C82 ;
+                box-shadow: 0px 3px 6px #00000029;
+                border: 1px solid #B2E8E8;" 
+                type="submit" value="Enter">
+             </menu>
+             <h2 style=" margin-left:30px; margin-bottom:0px;color:#707070;">%RH</h2>
+             <char>
+            <div id="chart_main" style="width: 90%; height: 400px; margin-right:10px;  margin-left:20px;  margin-top: 10px; "></div>
+            <h2 style=" margin-top:300px;margin-left: 10px; position: absolute; transform-origin: 0 0; 
+                        transform: rotate(-90deg);color:#707070; height: 20px;">Relative Humidity</h2>
+            <h2 style=" margin-left:10px;  margin-right:10px;color:#707070;
+                        display: inline-block;  align-self: flex-end;">Times</h2>
+            </char>
+        </div>
+        
     </main>
-    
+    <article>
+        <div  class="minibox1" style=" background: #FFFFFF; border-radius: 15px;">
+            <div style=" height: 20px;"></div>
+            <div style="margin-top: 20px;text-align: center; ">
+               <span  style="color:#707070; font-size: 30px;">Summarize graphs</span>
+               <span  style="color:#219C82; font-size: 30px;">weekly by sensor</span>
+            </div>
+            <menu style="margin-top: 20px;">
+               <input class="boxmenu" value="10001"
+               style="width: 80px; height: 24px;
+                background-image:url('search.png');
+                background-size: 24px 24px;
+                background-position: 5px 0px;
+                background-repeat: no-repeat;
+                padding-left: 30px;" 
+                type="text">
+               <div  style="width: 10px;"></div>
+               <select name="Month" id="Month"  class="boxmenu" style="height: 25px; width: 85px;">
+                 <option value="January">January</option>
+                 <option value="February">February</option>
+                 <option value="March">March</option>
+                 <option value="April">April</option>
+                 <option value="May">May</option>
+                 <option value="June">June</option>
+                 <option value="July">July</option>
+                 <option value="August">August</option>
+                 <option value="September">September</option>
+                 <option value="October">October</option>
+                 <option value="November">November</option>
+                 <option value="December">December</option>
+              </select>
+              <div  style="width: 10px;"></div>
+               <select name="cars" id="cars"  class="boxmenu" style="height: 25px; width: 85px;">
+                 <option value="volvo">Years</option>
+              </select>
+              <div  style="width: 10px;"></div>
+              <input style="
+               width: 45px;
+               height: 20px;
+               color: white;
+               margin-top: 5px;
+               background: #219C82 ;
+               box-shadow: 0px 3px 6px #00000029;
+               border: 1px solid #B2E8E8;" 
+               type="submit" value="Enter">
+            </menu>
+            <h3 style=" margin-left:30px; margin-bottom:0px;color:#707070;">%RH</h3>
+            <char>
+           <div id="chart_sup" style="width: 90%; height: 290px; margin-right:10px;  margin-left:20px;  margin-top: 10px; "></div>
+           <h3 style=" margin-top:200px;margin-left: 10px; position: absolute; transform-origin: 0 0; 
+                       transform: rotate(-90deg);color:#707070; height: 20px;">Relative Humidity</h3>
+           <h3 style=" margin-left:10px;  margin-right:20px;color:#707070;
+                       display: inline-block;  align-self: flex-end;">Times</h3>
+           </char>
+        </div>
+        <div  class="minibox2"  style=" background: #FFFFFF; border-radius: 15px;">
+            <div style=" height: 20px;"></div>
+            <div style="margin-top: 20px;text-align: center; ">
+               <span  style="color:#707070; font-size: 30px;">Summarize graphs</span>
+               <span  style="color:#219C82; font-size: 30px;">monthly by sensor</span>
+            </div>
+            <menu style="margin-top: 20px;">
+              <input class="boxmenu" value="101010"
+              style="width: 80px; height: 24px;
+              background-image:url('search.png');
+              background-size: 24px 24px;
+              background-position: 5px 0px;
+              background-repeat: no-repeat;
+              padding-left: 30px;"
+              type="text">
+              <div  style="width: 10px;"></div>
+               <select name="cars" id="cars"  class="boxmenu" style="height: 25px; width: 85px;">
+                 <option value="volvo">Years</option>
+              </select>
+              <div  style="width: 10px;"></div>
+              <input style="
+               width: 45px;
+               height: 20px;
+               margin-top: 5px;
+               background: #219C82 ;
+               color: white;
+               box-shadow: 0px 3px 6px #00000029;
+               border: 1px solid #B2E8E8;" 
+               type="submit" value="Enter">
+            </menu>
+            <h3 style=" margin-left:30px; margin-bottom:0px;color:#707070;">%RH</h3>
+            <char>
+           <div id="chart_sup2" style="width: 90%; height: 290px; margin-right:10px;  margin-left:20px;  margin-top: 10px; "></div>
+           <h3 style=" margin-top:200px;margin-left: 10px; position: absolute; transform-origin: 0 0; 
+                       transform: rotate(-90deg);color:#707070; height: 20px;">Relative Humidity</h3>
+           <h3 style=" margin-left:10px;  margin-right:20px;color:#707070;
+                       display: inline-block;  align-self: flex-end;">Times</h3>
+           </char>
+        </div>
+    </article>
 
 </body>
 </html>
