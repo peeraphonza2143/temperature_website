@@ -1,6 +1,6 @@
 var ip = '3b62-182-232-181-157.ngrok.io';
-
-// (function () {
+(function () {
+  
 //   `use strict`;
 // fetch('http://'+ip+'/mainchart')
 //   .then(response => response.json())
@@ -55,4 +55,4 @@ var ip = '3b62-182-232-181-157.ngrok.io';
           chart.draw(data, options);
         }
 // }
-//     })();    
+    })();    
