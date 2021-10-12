@@ -1,8 +1,8 @@
 const express = require('express')
-const app = express()
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-const humidityModel = require('./models/daychart.js')
+const humidityModel = require('./models/humidity')
+const humidityRoute = require('./routes/humidity.route')
 
 mongoose.connect('mongodb://localhost/humidity', {
   useNewUrlParser: true
@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/humidity', {
   }
 )
 
+const app = express()
 
 app.use(express.json());
 app.use(express.static(__dirname));
