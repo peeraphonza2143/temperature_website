@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost/humidity', {
 const app = express()
 
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/year', async (req, res) => {
   const rhYear = await humidityModel.find({ sensor: "1" })
