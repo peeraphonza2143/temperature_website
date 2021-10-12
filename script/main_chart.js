@@ -1,41 +1,32 @@
-var ip = '3b62-182-232-181-157.ngrok.io';
+var ip = '192.168.43.210:3000';
+
 (function () {
-  
-//   `use strict`;
-// fetch('http://'+ip+'/mainchart')
-//   .then(response => response.json())
-//   .then(data => getdata(data))
-//   .catch(
-//     error => console.log(error)
-//   );
-// function getdata(dataC){
+  `use strict`;
+fetch('http://'+ip+'/day?d=1/15/2012&s=1')
+  .then(response => response.json())
+  .then(data => getdata(data))
+  .catch(
+    error => console.log(error)
+  );
+function getdata(dataC){
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
 
-          // var data =  new google.visualization.DataTable();
-          // data.addColumn('string', 'Time');
-          // data.addColumn('number', 'Sensor 1');
-          // data.addColumn('number', 'Sensor 2');
-          // var i = 0 , s;
-          // for (v in dataC) {
-          //   i=i+1;
-          //   if(i%2 == 0){
-          //     var temp=[];
-          //     temp.push(dataC[v]['time']);
-          //     temp.push(dataC[v]['humidity_1']);
-          //     temp.push(s['humidity_1']);
-          //     data.addRow(temp);
-          //   }
-          //   s = dataC[v];
-          // }
-          var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales'],
-            ['2004',  1000],
-            ['2005',  1170],
-            ['2006',  660],
-            ['2007',  1030]
-          ]);
+          var data =  new google.visualization.DataTable();
+          data.addColumn('string', 'Time');
+          data.addColumn('number', 'Hr');
+          var temp=[];
+          console.log(dataC);
+          for (v in dataC) {
+         
+              temp=[];
+              temp.push(dataC[v]['time']);
+              temp.push(dataC[v]['humid']);
+              data.addRow(temp);
+            
+          }
+        
           var options = {
             fontName:'TCM',
             hAxis: {
@@ -50,9 +41,8 @@ var ip = '3b62-182-232-181-157.ngrok.io';
             chartArea:{left:80,right:0,top:40,width:"100%",height:"80%"},
             colors: ['#ED8975'],
           };
-          
           var chart = new google.visualization.LineChart(document.getElementById('chart_main'));
           chart.draw(data, options);
         }
-// }
+}
     })();    

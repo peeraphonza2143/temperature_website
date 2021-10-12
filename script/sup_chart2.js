@@ -1,41 +1,32 @@
-// (function () {
-//   `use strict`;
-// fetch('http://'+ip+'/subchart2')
-//   .then(response => response.json())
-//   .then(data => getdata(data))
-//   .catch(
-//     error => console.log(error)
-//   );
-// function getdata(dataC){  
+(function () {
+  `use strict`;
+fetch('http://'+ip+'/year')
+  .then(response => response.json())
+  .then(data => getdata(data))
+  .catch(
+    error => console.log(error)
+  );
+function getdata(dataC){  
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
 
-        // console.log(dataC);
-        // var data =  new google.visualization.DataTable();
-        // data.addColumn('string', 'Time');
-        // data.addColumn('number', 'Sensor 1');
-        // data.addColumn('number', 'Sensor 2');
-        // var i = 0 , s;
-        // for (v in dataC) {
-        //   i=i+1;
-        //   if(i%2 == 0){
-        //     var temp=[];
-        //     temp.push(dataC[v]['month']);
-        //     temp.push(dataC[v]['humidity_3']);
-        //     temp.push(s['humidity_3']);
-        //     console.log(temp);
-        //     data.addRow(temp);
-        //   }
-        //   s = dataC[v];
-        // }
-
+   
         var data = google.visualization.arrayToDataTable([
           ['Year', 'Sales'],
-          ['2004',  1000],
-          ['2005',  1170],
-          ['2006',  660],
-          ['2007',  1030]
+          ['jan',  dataC[0]['jan']],
+          ['feb',  dataC[0]['feb']],
+          ['mar',  dataC[0]['mar']],
+          ['apr',  dataC[0]['apr']],
+          ['may',  dataC[0]['may']],
+          ['jun',  dataC[0]['jun']],
+          ['jul',  dataC[0]['jul']],
+          ['aug',  dataC[0]['aug']],
+          ['sep',  dataC[0]['sep']],
+          ['oct',  dataC[0]['oct']],
+          ['nov',  dataC[0]['nov']],
+          ['dec',  dataC[0]['dec']]
+
         ]);
 
         var options = {
@@ -56,5 +47,5 @@ google.charts.setOnLoadCallback(drawChart);
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_sup2'));
         chart.draw(data, options);
       }
-    // }
-    // })();
+    }
+    })();

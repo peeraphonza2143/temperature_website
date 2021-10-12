@@ -1,47 +1,57 @@
 function GetApi(id,element){
-var ip = '3b62-182-232-181-157.ngrok.io';
-var Id = document.getElementById(id).value;
 
+var Id = document.getElementById(id).value;
+var url = '';
 //getInput
 var D_Date = document.getElementById('D_Date').value;
-var M_m_Date = document.getElementById('M_m_Date').value;
-var M_y_Date = document.getElementById('M_y_Date').value;
-var Y_Date = document.getElementById('Y_Date').value;
+var M_m_Date = $('#M_m_Date').val();
+var M_y_Date =$('#M_y_Date').val();
+var Y_Date = $('#Y_Date').val();
+
 
 if (Id == "") {
     alert("กรุณากรอก ID");
     return false;
   }
-// fetch('http://'+ip+'/mainchart')
-//   .then(response => response.json())
-//   .then(data => getdata(data));
-//   function getdata(dataC){
+if(element == 'chart_main'){
+  var d = parseInt(D_Date.split("-")[1]);
+  var m = parseInt(D_Date.split("-")[2]);
+  url='http://'+ip+'/day?d='+d+'/'+m+'/2012&s='+Id;
+  console.log(url);
+}
+else if(element == 'chart_sup'){
+  url = 'http://'+ip+'/month?m='+M_m_Date+'&y=2012';
+}
+else{ return false; }
+fetch(url)
+  .then(response => response.json())
+  .then(data => getdata(data));
+  function getdata(dataC){
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-            // var data =  new google.visualization.DataTable();
-            // data.addColumn('string', 'Time');
-            // data.addColumn('number', 'Sensor 1');
-            // data.addColumn('number', 'Sensor 2');
-            // var i = 0 , s;
-            // for (v in dataC) {
-            //   i=i+1;
-            //   if(i%2 == 0){
-            //     var temp=[];
-            //     temp.push(dataC[v]['time']);
-            //     temp.push(dataC[v]['humidity_1']);
-            //     temp.push(s['humidity_1']);
-            //     data.addRow(temp);
-            //   }
-            //   s = dataC[v];
-            // }
-            var data = google.visualization.arrayToDataTable([
-              ['Year', 'Sales'],
-              ['2004',  5000],
-              ['2005',  4170],
-              ['2006',  860],
-              ['2007',  2030]
-            ]);
+      var data;
+  if(element == 'chart_main'){
+      data =  new google.visualization.DataTable();
+      data.addColumn('string', 'Time');
+      data.addColumn('number', 'Hr');
+      var temp=[];
+        for (v in dataC) {
+             temp=[];
+             temp.push(dataC[v]['time']);
+             temp.push(dataC[v]['humid']);
+             data.addRow(temp);
+           }
+  } 
+  else if(element == 'chart_sup'){
+        data = google.visualization.arrayToDataTable([
+        ['Year', 'Sales'],
+        ['week1',  dataC[0]['week1']],
+        ['week2',  dataC[0]['week2']],
+        ['week3',  dataC[0]['week3']],
+        ['week4',  dataC[0]['week4']]
+      ]);
+  }     
             var options = {
               fontName:'TCM',
               hAxis: {
@@ -67,4 +77,4 @@ if (Id == "") {
             chart.draw(data, options);
           }
   }
-// }
+}
