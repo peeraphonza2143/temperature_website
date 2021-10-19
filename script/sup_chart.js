@@ -1,7 +1,7 @@
 (function () {
 `use strict`;
 
-fetch('http://'+ip+'/month?m=1&y=2012')
+fetch('http://'+ip+'/2012/month?m=1&s=1')
   .then(response => response.json())
   .then(data => getdata(data))
   .catch(
