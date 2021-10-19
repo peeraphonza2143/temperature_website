@@ -6,8 +6,8 @@ const rhSchema = new Schema({
   time: String,
   humid: Number,
   sensor: String
-},{collection:'rh2012'})
+},{collection:'rh2019'})
 
-const rhModel = mongoose.model('rh2012', rhSchema)
+const rhModel = mongoose.model('rh2019', rhSchema)
 
-module.exports = rhModel
+module.exports =  rhModel

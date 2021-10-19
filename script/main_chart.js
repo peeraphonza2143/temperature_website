@@ -1,8 +1,8 @@
-var ip = '192.168.43.210:3000';
+var ip = '527c-171-6-220-103.ngrok.io';
 
 (function () {
   `use strict`;
-fetch('http://'+ip+'/day?d=1/15/2012&s=1')
+fetch('http://'+ip+'/2012/day?d=1/15/2012&s=1')
   .then(response => response.json())
   .then(data => getdata(data))
   .catch(

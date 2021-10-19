@@ -16,13 +16,17 @@ if (Id == "") {
 if(element == 'chart_main'){
   var d = parseInt(D_Date.split("-")[1]);
   var m = parseInt(D_Date.split("-")[2]);
-  url='http://'+ip+'/day?d='+d+'/'+m+'/2012&s='+Id;
+  var y = parseInt(D_Date.split("-")[0]);
+
+  url='http://'+ip+'/'+y+'/day?d='+d+'/'+m+'/'+y+'&s='+Id;
   console.log(url);
 }
 else if(element == 'chart_sup'){
-  url = 'http://'+ip+'/month?m='+M_m_Date+'&y=2012';
+  url = 'http://'+ip+'/'+M_y_Date+'/month?m='+M_m_Date+'&s='+Id;
 }
-else{ return false; }
+else{ 
+  url = 'http://'+ip+'/'+Y_Date+'/year?s='+Id;
+ }
 fetch(url)
   .then(response => response.json())
   .then(data => getdata(data));
@@ -51,6 +55,23 @@ fetch(url)
         ['week3',  dataC[0]['week3']],
         ['week4',  dataC[0]['week4']]
       ]);
+  }
+  else{
+      data = google.visualization.arrayToDataTable([
+      ['Year', 'Sales'],
+      ['jan',  dataC[0]['jan']],
+      ['feb',  dataC[0]['feb']],
+      ['mar',  dataC[0]['mar']],
+      ['apr',  dataC[0]['apr']],
+      ['may',  dataC[0]['may']],
+      ['jun',  dataC[0]['jun']],
+      ['jul',  dataC[0]['jul']],
+      ['aug',  dataC[0]['aug']],
+      ['sep',  dataC[0]['sep']],
+      ['oct',  dataC[0]['oct']],
+      ['nov',  dataC[0]['nov']],
+      ['dec',  dataC[0]['dec']]
+    ]);
   }     
             var options = {
               fontName:'TCM',
@@ -70,8 +91,11 @@ fetch(url)
             if(element == 'chart_main'){
                chart = new google.visualization.LineChart(document.getElementById(element));
             }
-            else{
+            else if(element == 'chart_sup'){
                chart = new google.visualization.ColumnChart(document.getElementById(element));
+            }
+            else{
+              chart = new google.visualization.ColumnChart(document.getElementById(element));
             }
             
             chart.draw(data, options);
