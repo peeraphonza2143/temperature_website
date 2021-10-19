@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="font/Staatliches-Regular.ttf">
+   <link rel="stylesheet" href="./css/style.css">
+
+   <title>Humidity From A Sensor</title>
+</head>
+
+<body>
+   <main>
+      <div id="box">
+         <aside>
+            <div style="width: 100%;">
+               <span id="header" style="color:#219C82; font-family:'Staatliches';">HUMIDITY </span>
+               <span id="header" style="color:#595C59; font-family:'Staatliches'">FROM A SENSOR</span>
+               <p
+                  style="width: 800px; font-size: 24px; color: #595C59; margin-left: 2%; margin-top: 0;font-family:'TCM'">
+                  A humidity sensor is an electronic device that measures the humidity in
+                  its environment and converts its findings into a corresponding electrical
+                  signal
+               </p>
+            </div>
+            <img src="./picture/icon.png">
+         </aside>
+      </div>
+
+      <div id="box" style="width: 100%; height: 725px; margin-top: 20px;  font-family:'TCM';">
+         <div style=" height: 30px;"></div>
+         <div style="margin-top: 20px;text-align: center; ">
+            <h1>
+               <span style="color:#219C82; font-size: 35px;">Real time</span>
+               <span style="color:#595C59; font-size: 35px;"> graph of humidity with resolution 15 minutes</span>
+            </h1>
+         </div>
+         <menu>
+            <input id="D_ID" class="boxmenu" value="1" ; style="width: 135px; height: 43px;
+                background-image:url('search.png');
+                background-position: 10px 10px;
+                background-repeat: no-repeat;
+                padding-left: 40px;" type="text" required>
+            <div style="width: 10px;"></div>
+            <input id="D_Date" class="boxmenu" value="2021-01-15" style="width: 192px; height: 43px;font-family:'TCM';"
+               type="date">
+            <div style="width: 10px;"></div>
+            <input style="
+                width: 78px;
+                height: 29px;
+                margin-top: 10px;
+                color: white;
+                background: #219C82 ;
+                box-shadow: 0px 3px 6px #00000029;
+                border: 1px solid #B2E8E8;" type="submit" value="Enter" onclick="GetApi('D_ID','chart_main')">
+         </menu>
+         <h2 style=" margin-left:30px; margin-bottom:0px;color:#707070;">%RH</h2>
+         <char>
+            <div id="chart_main"
+               style="width: 90%; height: 400px; margin-right:10px;  margin-left:20px;  margin-top: 10px; "></div>
+            <h2 style=" margin-top:300px;margin-left: 10px; position: absolute; transform-origin: 0 0; 
+                        transform: rotate(-90deg);color:#707070; height: 20px;">Relative Humidity</h2>
+            <h2 style=" margin-left:10px;  margin-right:10px;color:#707070;
+                        display: inline-block;  align-self: flex-end;">Times</h2>
+         </char>
+      </div>
+
+   </main>
+   <article>
+      <div class="minibox1" style=" background: #FFFFFF; border-radius: 15px;">
+         <div style=" height: 20px;"></div>
+         <div style="margin-top: 20px;text-align: center; ">
+            <h1>
+               <span style="color:#707070; font-size: 30px;">Summarize graphs</span>
+               <span style="color:#219C82; font-size: 30px;">weekly by sensor</span>
+            </h1>
+         </div>
+         <menu style="margin-top: 20px;">
+            <input id="S_ID" class="boxmenu" value="1" style="width: 80px; height: 24px;
+                background-image:url('./picture/search.png');
+                background-size: 24px 24px;
+                background-position: 5px 0px;
+                background-repeat: no-repeat;
+                padding-left: 30px;" type="text" required>
+            <div style="width: 10px;"></div>
+            <select id="M_m_Date" class="boxmenu" style="height: 25px; width: 85px;">
+               <option value="1">January</option>
+               <option value="2">February</option>
+               <option value="3">March</option>
+               <option value="4">April</option>
+               <option value="5">May</option>
+               <option value="6">June</option>
+               <option value="8">August</option>
+               <option value="7">July</option>
+               <option value="9">September</option>
+               <option value="10">October</option>
+               <option value="11">November</option>
+               <option value="12">December</option>
+            </select>
+            <div style="width: 10px;"></div>
+            <select id="M_y_Date" class="boxmenu" style="height: 25px; width: 85px;">
+               <!-- <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option> -->
+               <option value="2012">2012</option>
+            </select>
+            <div style="width: 10px;"></div>
+            <input style="
+               width: 45px;
+               height: 20px;
+               color: white;
+               margin-top: 5px;
+               background: #219C82 ;
+               box-shadow: 0px 3px 6px #00000029;
+               border: 1px solid #B2E8E8;" type="submit" value="Enter" onclick="GetApi('S_ID','chart_sup')">
+         </menu>
+         <h3 style=" margin-left:30px; margin-bottom:0px;color:#707070;">%RH</h3>
+         <char>
+            <div id="chart_sup"
+               style="width: 90%; height: 290px; margin-right:10px;  margin-left:20px;  margin-top: 10px; "></div>
+            <h3 style=" margin-top:200px;margin-left: 10px; position: absolute; transform-origin: 0 0; 
+                       transform: rotate(-90deg);color:#707070; height: 20px;">Relative Humidity</h3>
+            <h3 style=" margin-left:10px;  margin-right:20px;color:#707070;
+                       display: inline-block;  align-self: flex-end;">Week</h3>
+         </char>
+      </div>
+      <div class="minibox2" style=" background: #FFFFFF; border-radius: 15px;">
+         <div style=" height: 20px;"></div>
+         <div style="margin-top: 20px;text-align: center; ">
+            <h1>
+               <span style="color:#707070; font-size: 30px;">Summarize graphs</span>
+               <span style="color:#219C82; font-size: 30px;">monthly by sensor</span>
+            </h1>
+         </div>
+         <menu style="margin-top: 20px;">
+            <input id="S2_ID" class="boxmenu" value="1" style="width: 80px; height: 24px;
+              background-image:url('search.png');
+              background-size: 24px 24px;
+              background-position: 5px 0px;
+              background-repeat: no-repeat;
+              padding-left: 30px;" type="text" required>
+            <div style="width: 10px;"></div>
+            <select id="Y_Date" class="boxmenu" style="height: 25px; width: 85px;">
+               <!-- <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option> -->
+               <option value="2012">2012</option>
+            </select>
+            <div style="width: 10px;"></div>
+            <input style="
+               width: 45px;
+               height: 20px;
+               margin-top: 5px;
+               background: #219C82 ;
+               color: white;
+               box-shadow: 0px 3px 6px #00000029;
+               border: 1px solid #B2E8E8;" type="submit" value="Enter" onclick="GetApi('S2_ID','chart_sup2')">
+         </menu>
+         <h3 style=" margin-left:30px; margin-bottom:0px;color:#707070;">%RH</h3>
+         <char>
+            <div id="chart_sup2"
+               style="width: 90%; height: 290px; margin-right:10px;  margin-left:20px;  margin-top: 10px; "></div>
+            <h3 style=" margin-top:200px;margin-left: 10px; position: absolute; transform-origin: 0 0; 
+                       transform: rotate(-90deg);color:#707070; height: 20px;">Relative Humidity</h3>
+            <h3 style=" margin-left:10px;  margin-right:20px;color:#707070;
+                       display: inline-block;  align-self: flex-end;">Month</h3>
+         </char>
+      </div>
+   </article>
+
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="./script/main_chart.js"></script>
+   <script src="./script/sup_chart.js"></script>
+   <script src="./script/sup_chart2.js"></script>
+   <script src="./script/getAPI.js"></script>
+
+</body>
+
+</html>

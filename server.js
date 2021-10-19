@@ -15,22 +15,20 @@ const rh2019 = require('./models/rh2019.js')
 const rh2020 = require('./models/rh2020.js')
 const rh2021 = require('./models/rh2021.js')
 
-mongoose.connect('mongodb://localhost/humidity',{
-	useNewUrlParser: true
-})
-var db = mongoose.connection;
+mongoose.connect('mongodb://localhost/humidity', {
+  useNewUrlParser: true
+}).then(() => {
+  console.log('Database sucessfully connected')
+},
+  error => {
+    console.log('Database could not connected: ' + error)
+  }
+)
 
-const tempDs = [
-	{
-		date: '01/09/2021',
-		time: '11.15',
-		sensor_id : '1',
-		humidity_1: '50'
-	}
-]
+const app = express()
 
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/2012/year',async(req, res) =>{
   var sensorid = req.query.s
@@ -388,29 +386,28 @@ var monthCal = function(rhMonth){
   var i = 0
   var w1=0,w2=0,w3=0,w4=0
 
-  for (index in rhMonth){
-  day = day + rhMonth[index]['humid']
-  if ((parseInt(index)+1)%24==0)
-  {
-    sumday = sumday + day / 24
-    dayofday = sumday
-    day = 0
-    countday = countday + 1
-    if (countday == 7)
-    {
-	i = i + 1
-	sumweek = sumweek + dayofday/7
-	if(i == 1){w1 = parseInt(sumweek)}
-	if(i == 2){w2 = parseInt(sumweek)}
-	if(i == 3){w3 = parseInt(sumweek)}
-	if(i == 4){w4 = parseInt(sumweek)}
-	sumweek = 0
-	sumday = 0
-	countday = 0
-	dayofday = 0
+  for (index in rhMonth) {
+    day = day + rhMonth[index]['humid']
+    if ((parseInt(index) + 1) % 24 == 0) {
+      sumday = sumday + day / 24
+      dayofday = sumday
+      day = 0
+      countday = countday + 1
+      if (countday == 7) {
+        i = i + 1
+        sumweek = sumweek + dayofday / 7
+        if (i == 1) { w1 = parseInt(sumweek) }
+        if (i == 2) { w2 = parseInt(sumweek) }
+        if (i == 3) { w3 = parseInt(sumweek) }
+        if (i == 4) { w4 = parseInt(sumweek) }
+        sumweek = 0
+        sumday = 0
+        countday = 0
+        dayofday = 0
+      }
     }
   }
-}
+
  return data = [{"week1":w1,"week2":w2,"week3":w3,"week4":w4}]
 }
 
@@ -426,6 +423,7 @@ app.get('/', function(req, res) {
   res.render('index.html');
 });
 
-app.listen(3000, () => {
-  console.log('Application is running on port 9000')
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+  console.log(`Application is running on http://localhost:${port}`)
 })
