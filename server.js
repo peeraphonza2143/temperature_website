@@ -1,5 +1,4 @@
 const express = require('express')
-const app = express()
 const mongoose = require('mongoose')
 const path = require('path')
 const querystring = require('querystring');
@@ -411,14 +410,6 @@ var monthCal = function(rhMonth){
  return data = [{"week1":w1,"week2":w2,"week3":w3,"week4":w4}]
 }
 
-
-db.on('error', function callback () {
-  console.log("Connection error");
-});
-
-db.once('open', function callback () {
-  console.log("Mongo working!");
-});
 app.get('/', function(req, res) {
   res.render('index.html');
 });

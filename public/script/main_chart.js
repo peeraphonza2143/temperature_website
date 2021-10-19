@@ -1,4 +1,4 @@
-var ip = '527c-171-6-220-103.ngrok.io';
+var ip = 'localhost:4000';
 
 (function () {
   `use strict`;
