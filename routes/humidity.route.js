@@ -62,36 +62,11 @@ humidityRoute.route('/api/week').get((req, res, next) => {
             week5.push(element.humidity)
           }
         }
-
-        var sumWeek1 = 0;
-        for (var i = 0; i < week1.length; i++) {
-          sumWeek1 += week1[i]
-        }
-        var avgWeek1 = sumWeek1 / week1.length;
-
-        var sumWeek2 = 0;
-        for (var i = 0; i < week2.length; i++) {
-          sumWeek2 += week2[i]
-        }
-        var avgWeek2 = sumWeek2 / week2.length;
-
-        var sumWeek3 = 0;
-        for (var i = 0; i < week3.length; i++) {
-          sumWeek3 += week3[i]
-        }
-        var avgWeek3 = sumWeek3 / week3.length;
-
-        var sumWeek4 = 0;
-        for (var i = 0; i < week4.length; i++) {
-          sumWeek4 += week4[i]
-        }
-        var avgWeek4 = sumWeek4 / week4.length;
-
-        var sumWeek5 = 0;
-        for (var i = 0; i < week5.length; i++) {
-          sumWeek5 += week5[i]
-        }
-        var avgWeek5 = sumWeek5 / week5.length;
+        var avgWeek1 = summery(week1, true)
+        var avgWeek2 = summery(week2, true)
+        var avgWeek3 = summery(week3, true)
+        var avgWeek4 = summery(week4, true)
+        var avgWeek5 = summery(week5, true)
 
         res.json([avgWeek1, avgWeek2, avgWeek3, avgWeek4, avgWeek5]);
       }
@@ -100,8 +75,6 @@ humidityRoute.route('/api/week').get((req, res, next) => {
 })
 
 humidityRoute.route('/api/year').get((req, res, next) => {
-
-
   var dateCon = new Date()
   var year = dateCon.getFullYear()
   humidityModel.findOne((error, dataOne) => {
@@ -114,16 +87,88 @@ humidityRoute.route('/api/year').get((req, res, next) => {
       if (error) {
         next(error)
       } else {
+
+        var month1 = [], month2 = [], month3 = [], month4 = [], month5 = [], month6 = [],
+          month7 = [], month8 = [], month9 = [], month10 = [], month11 = [], month12 = []
+
         for (let index = 0; index < data.length; index++) {
           const element = data[index];
+          var date = new Date(element.timestamp)
 
-          console.log(element);
+          switch (date.getMonth()) {
+            case 0:
+              month1.push(element.humidity)
+              break;
+            case 1:
+              month2.push(element.humidity)
+              break;
+            case 2:
+              month3.push(element.humidity)
+              break;
+            case 3:
+              month4.push(element.humidity)
+              break;
+            case 4:
+              month5.push(element.humidity)
+              break;
+            case 5:
+              month6.push(element.humidity)
+              break;
+            case 6:
+              month7.push(element.humidity)
+              break;
+            case 7:
+              month8.push(element.humidity)
+              break;
+            case 8:
+              month9.push(element.humidity)
+              break;
+            case 9:
+              month10.push(element.humidity)
+              break;
+            case 10:
+              month11.push(element.humidity)
+              break;
+            case 11:
+              month12.push(element.humidity)
+              break;
+          }
         }
-        res.json(data);
+
+        res.json([{
+          "jan": summery(month1, true),
+          "feb": summery(month2, true),
+          "mar": summery(month3, true),
+          "apr": summery(month4, true),
+          "may": summery(month5, true),
+          "jun": summery(month6, true),
+          "jul": summery(month7, true),
+          "aug": summery(month8, true),
+          "sep": summery(month9, true),
+          "oct": summery(month10, true),
+          "nov": summery(month11, true),
+          "dec": summery(month12, true)
+        }]);
       }
     })
   })
 })
+
+function summery(arr, aver = false) {
+  var sum = 0
+  for (let index = 0; index < arr.length; index++) {
+    sum += arr[index];
+  }
+  if (aver) {
+    return averange(sum, arr.length)
+  } else {
+    return sum
+  }
+}
+
+function averange(num, length) {
+  return num / length
+}
 
 // number return 2 digit
 function prependZero(number) {
