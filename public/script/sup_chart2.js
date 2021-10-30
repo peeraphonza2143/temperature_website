@@ -1,7 +1,7 @@
 (function () {
   `use strict`;
   // fetch('http://' + ip + '/2012/year?s=1')
-  fetch('http://localhost:4000/api/year')
+  fetch('http://'+ip+'/api/year')
     .then(response => response.json())
     .then(data => getdata(data))
     .catch(

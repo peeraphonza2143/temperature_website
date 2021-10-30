@@ -1,9 +1,9 @@
-var ip = 'localhost:4000';
+var ip = '192.168.2.49:4000';
 
 (function () {
   `use strict`;
   // fetch('http://' + ip + '/2012/day?d=1/15/2012&s=1')
-  fetch('http://localhost:4000/api/realtime')
+  fetch('http://'+ ip + '/api/realtime')
     .then(response => response.json())
     .then(data => getdata(data))
     .catch(

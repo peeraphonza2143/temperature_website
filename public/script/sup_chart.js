@@ -2,7 +2,7 @@
   `use strict`;
 
   // fetch('http://' + ip + '/2012/month?m=1&s=1')
-  fetch('http://localhost:4000/api/week')
+  fetch('http://'+ip+'/api/week')
     .then(response => response.json())
     .then(data => getdata(data))
     .catch(
