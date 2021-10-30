@@ -68,7 +68,7 @@ humidityRoute.route('/api/week').get((req, res, next) => {
         var avgWeek4 = summery(week4, true)
         var avgWeek5 = summery(week5, true)
 
-        res.json([avgWeek1, avgWeek2, avgWeek3, avgWeek4, avgWeek5]);
+        res.json([{avgWeek1, avgWeek2, avgWeek3, avgWeek4, avgWeek5}]);
       }
     })
   })

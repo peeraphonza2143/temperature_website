@@ -12,13 +12,14 @@
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      console.log(dataC);
+      
       var data = google.visualization.arrayToDataTable([
         ['Year', 'Sales'],
         ['week1', dataC[0]['avgWeek1']],
         ['week2', dataC[0]['avgWeek2']],
         ['week3', dataC[0]['avgWeek3']],
         ['week4', dataC[0]['avgWeek4']],
+        ['week5', dataC[0]['avgWeek5']]
       ]);
 
       var options = {
